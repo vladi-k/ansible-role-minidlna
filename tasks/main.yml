@@ -1,0 +1,30 @@
+---
+- name: Copy MiniDLNA binary
+  ansible.builtin.copy:
+    src: usr/local/sbin/minidlnad
+    dest: /usr/local/sbin/minidlnad
+    owner: root
+    mode: 0755
+
+- name: Generate minidlna.conf
+  ansible.builtin.template:
+    src: usr/local/etc/minidlna.conf
+    dest: /usr/local/etc/minidlna.conf
+    owner: root
+    mode: 0400
+  notify: restart minidlna
+
+- name: Generate systemd script
+  ansible.builtin.template:
+    src: usr/lib/systemd/system/minidlnad.service
+    dest: /usr/lib/systemd/system/minidlnad.service
+    owner: root
+    mode: 0644
+  notify: systemctl daemon-reload
+
+- name: Enable and start minidlna service
+  ansible.builtin.service:
+    name: minidlnad
+    state: started
+    enabled: true
+  when: minidlna_enable | bool
