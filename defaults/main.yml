@@ -1,6 +1,6 @@
 ---
 minidlna_port: 8200
-minidlna_network_interface: {{ ansible_default_ipv4['interface'] }}
+minidlna_network_interface: "{{ ansible_default_ipv4['interface'] }}"
 minidlna_ssdp_port: 1900
 minidlna_media_dirs: []
 minidlna_friendly_name: My DLNA Server
