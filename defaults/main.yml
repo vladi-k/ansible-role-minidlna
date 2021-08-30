@@ -1,0 +1,14 @@
+---
+minidlna_port: 8200
+minidlna_network_interface: {{ ansible_default_ipv4['interface'] }}
+minidlna_ssdp_port: 1900
+minidlna_media_dirs: []
+minidlna_friendly_name: My DLNA Server
+minidlna_db_dir: /var/cache/minidlna
+minidlna_log_dir: /var/log
+minidlna_inotify: true
+minidlna_strict_dlna: false
+minidlna_notify_interval: 900
+minidlna_serial: 12345678
+minidlna_model_number: 1
+minidlna_enable: true

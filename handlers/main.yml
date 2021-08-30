@@ -1,0 +1,9 @@
+---
+- name: systemctl daemon-reload
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: restart minidlna
+  ansible.builtin.service:
+    name: minidlnad
+    state: restarted
+  when: minidlna_enable | bool

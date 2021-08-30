@@ -1,0 +1,11 @@
+{{ ansible_managed | comment }}
+[Unit]
+Description=MiniDLNA Daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/sbin/minidlnad -f /usr/local/etc/minidlna.conf
+
+[Install]
+WantedBy=multi-user.target
